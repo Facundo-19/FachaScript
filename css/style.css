@@ -276,3 +276,35 @@ header {
         width: 280px;
     }
 }
+
+.customer-container {
+    display: flex; 
+    overflow-x: auto;
+   }
+  
+  .customer {
+    flex: 0 0 auto; 
+    text-align: center; 
+    margin-right: 10px; 
+  }
+  
+  .customer-image {
+    max-width: 100px; 
+    height: auto; 
+  }
+  .frequent-customers {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: space-around; 
+    align-items: center; 
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-top: 50px;
+  }

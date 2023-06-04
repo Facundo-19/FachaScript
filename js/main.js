@@ -212,4 +212,41 @@ function buyButtonClicked() {
     saveCartToLocalStorage()
 }
 
+// Ultimos clientes
+function getRickAndMortyCharacters() {
+    fetch('https://rickandmortyapi.com/api/character')
+      .then(response => response.json())
+      .then(data => {
+        const characters = data.results;
+        const frequentCustomers = getRandomCharacters(characters, 3);
+        displayFrequentCustomers(frequentCustomers);
+      })
+      .catch(error => {
+        console.log('Error:', error);
+      });
+  }
+  
+  function getRandomCharacters(characters, count) {
+    const shuffledCharacters = characters.sort(() => 0.5 - Math.random());
+    return shuffledCharacters.slice(0, count);
+  }
+  
+  function displayFrequentCustomers(characters) {
+    const frequentCustomersContainer = document.querySelector('.frequent-customers');
+  
+    frequentCustomersContainer.classList.add('customer-container');
+  
+    characters.forEach(character => {
+      const customerElement = document.createElement('div');
+      customerElement.classList.add('customer');
+      customerElement.innerHTML = `
+        <img src="${character.image}" alt="${character.name}" class="customer-image">
+        <h3 class="customer-name">${character.name}</h3>
+      `;
+      frequentCustomersContainer.appendChild(customerElement);
+    });
+  }
+  
+  getRickAndMortyCharacters();
+
 
